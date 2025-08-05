@@ -49,7 +49,7 @@ jobs:
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.20.0 # Use the latest version available
       with:
-        image-ref: 'mpython-app:build-${{ github.run_number }}'
+        image-ref: 'python-app:build-${{ github.run_number }}'
         format: 'sarif'
         output: 'trivy-results.sarif'
 
