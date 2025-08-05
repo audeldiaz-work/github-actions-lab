@@ -9,7 +9,6 @@ on:
 env:
   REGISTRY: "ghcr.io/audeldiaz-work"
   IMAGE_NAME: "github-actions-lab"
-  IMAGE_TAG: ${{ github.sha }}
 
 permissions:
   packages: write
@@ -50,12 +49,12 @@ jobs:
           build-args: |
             PYTHON_VERSION=3.${{ vars.PYTHON_MINOR_VERSION }}
           tags: |
-            ${ env.REGISTRY }/${ env.IMAGE_NAME }:latest
-            ${ env.REGISTRY }/${ env.IMAGE_NAME }:${{ env.IMAGE_TAG }}
+            "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+            "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: ${ env.REGISTRY }/${ env.IMAGE_NAME }:${{ env.IMAGE_TAG }}
+          image-ref: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
           format: "sarif"
           output: "trivy-results.sarif"
           severity: "CRITICAL,HIGH"
