@@ -54,6 +54,7 @@ jobs:
         #push: # optional, default is false
         # Generate SBOM attestation for the build (shorthand for --attest=type=sbom)
         sbom: true
+        push: true
         # List of tags
         tags: python-app:build-${{ github.run_number }}
         # GitHub Token used to authenticate against a repository for Git context
