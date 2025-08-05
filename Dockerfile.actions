@@ -7,6 +7,9 @@ FROM python:${PYTHON_VERSION}-slim
 # Set working directory
 WORKDIR /app
 
+RUN apt-get update && apt-get upgrade -y \ 
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy requirements if exists, then install dependencies
 COPY src/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt || true
