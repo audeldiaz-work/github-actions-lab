@@ -55,7 +55,7 @@ jobs:
             "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
             "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.20.0
+        uses: aquasecurity/trivy-action@0.32.0
         with:
           image-ref: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
           format: "sarif"
