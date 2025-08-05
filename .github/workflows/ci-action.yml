@@ -46,16 +46,19 @@ jobs:
         context: ./
         file: Dockerfile.actions
         pull: true
-        tags: python-app:build-${{ github.run_number }}
+        tags: audeldiaz-work/github-actions-lab:${{ github.sha }}
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.20.0 # Use the latest version available
       with:
-        image-ref: 'python-app:build-${{ github.run_number }}'
+        image-ref: 'audeldiaz-work/github-actions-lab:${{ github.sha }}'
         format: 'sarif'
         output: 'trivy-results.sarif'
+        severity: 'CRITICAL,HIGH'
 
     - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: 'trivy-results.sarif'
-          
+
+    - name: push image to ghcr.io
+      run: docker push ghcr.io/audeldiaz-work/github-actions-lab:${{ github.sha }}
