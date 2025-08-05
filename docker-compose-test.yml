@@ -1,0 +1,12 @@
+services:
+  app:
+    image: github-actions-app:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile.actions
+      args:
+        - PYTHON_VERSION=3
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./src:/app
