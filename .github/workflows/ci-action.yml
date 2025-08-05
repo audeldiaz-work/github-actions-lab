@@ -48,7 +48,7 @@ jobs:
           context: ./
           file: Dockerfile.actions
           pull: true
-          platforms: linux/amd64,linux/arm64
+          #platforms: linux/amd64,linux/arm64
           build-args: |
             PYTHON_VERSION=3.${{ vars.PYTHON_MINOR_VERSION }}
           tags: |
