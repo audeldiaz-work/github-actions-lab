@@ -40,15 +40,12 @@ jobs:
         run: |
           pytest
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.18.0
         with:
           context: ./
           file: Dockerfile.actions
           pull: true
-          #platforms: linux/amd64,linux/arm64
           build-args: |
             PYTHON_VERSION=3.${{ vars.PYTHON_MINOR_VERSION }}
           tags: |
