@@ -45,7 +45,7 @@ jobs:
         #build-args: # optional
         context: ./
         # Path to the Dockerfile
-        file: Dockerfile.action
+        file: Dockerfile.actions
         # List of metadata for an image
         #labels: # optional
         # Always attempt to pull all referenced images
