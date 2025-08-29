@@ -29,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pytest coverage
-          if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
+          pip install flake8 pytest coverage uv
+          if [ -f src/pyproject.toml ]; then uv sync --locked --directory src; fi
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
