@@ -29,6 +29,20 @@ def test_read_item(item_id, q, expected):
     assert response.json() == expected
 
 
+
 def test_read_item_invalid_id():
     response = client.get("/items/not-an-int")
     assert response.status_code == 422  # Unprocessable Entity for invalid int
+
+
+def test_get_timestamp():
+    response = client.get("/timestamp")
+    assert response.status_code == 200
+    data = response.json()
+    assert "timestamp" in data
+    # Check that the timestamp is a valid ISO format string
+    from datetime import datetime
+    try:
+        datetime.fromisoformat(data["timestamp"])
+    except ValueError:
+        pytest.fail("Timestamp is not a valid ISO format string")

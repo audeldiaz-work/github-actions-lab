@@ -3,9 +3,22 @@ This module defines a simple FastAPI application.
 It includes endpoints for retrieving a greeting and items by ID.
 """
 from typing import Union
+
 from fastapi import FastAPI
+from datetime import datetime
+
 
 app = FastAPI()
+@app.get("/timestamp")
+def get_timestamp() -> dict:
+    """
+    Endpoint that returns the current server timestamp in ISO format.
+
+    Returns:
+        dict: A dictionary containing the server timestamp.
+    """
+    from datetime import timezone
+    return {"timestamp": datetime.now(timezone.utc).isoformat()}
 
 
 @app.get("/")
