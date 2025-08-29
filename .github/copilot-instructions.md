@@ -1,16 +1,16 @@
 # Copilot Instructions for github-actions-lab
 
 ## Project Overview
-- This repo is a Python FastAPI web app with two main endpoints: `/` (Hello World) and `/items/{item_id}` (item lookup).
+- This repo is a Python FastAPI web app with three main endpoints: `/` (Hello World), `/items/{item_id}` (item lookup), and `/timestamp` (server timestamp).
 - The codebase is containerized for VS Code development using dev containers (`.devcontainer/Dockerfile`).
 - CI/CD is managed via GitHub Actions, running tests, linting, building Docker images, and scanning for vulnerabilities.
 
 ## Key Files & Structure
-- `src/main.py`: Main FastAPI app and endpoints.
+- `src/main.py`: Main FastAPI app and endpoints, including `/timestamp` for server time.
 - `src/pyproject.toml`: Python project metadata and dependencies.
 - `src/uv.lock`: Dependency lock file for reproducible builds.
 - `src/tests/main_test.py`: Pytest-based tests for API endpoints.
-- `.devcontainer/Dockerfile`: Dev container setup (Debian, Python, Node.js, Fish shell).
+- `.devcontainer/Dockerfile`: Dev container setup (Debian, Python, Fish shell).
 - `docker-compose-test.yml`: Compose file for local testing (if present).
 
 ## Developer Workflows
@@ -59,7 +59,7 @@
 - All Python code lives in `src/`.
 - Tests are in `src/tests/` and use pytest.
 - Use `uv` for dependency management (see `uv.lock`).
-- Endpoints follow FastAPI conventions; see `main.py` for structure.
+- Endpoints follow FastAPI conventions; see `main.py` for structure. `/timestamp` returns the current server time in ISO format (UTC).
 - CI/CD expects tests and linting to pass before building/publishing images.
 
 ## Integration Points
