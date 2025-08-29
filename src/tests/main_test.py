@@ -1,13 +1,16 @@
+
 import pytest
 from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
 
+
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
+
 
 @pytest.mark.parametrize(
     "item_id, q, expected",
@@ -24,6 +27,7 @@ def test_read_item(item_id, q, expected):
     response = client.get(f"/items/{item_id}", params=params)
     assert response.status_code == 200
     assert response.json() == expected
+
 
 def test_read_item_invalid_id():
     response = client.get("/items/not-an-int")
