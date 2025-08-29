@@ -29,7 +29,6 @@ def test_read_item(item_id, q, expected):
     assert response.json() == expected
 
 
-
 def test_read_item_invalid_id():
     response = client.get("/items/not-an-int")
     assert response.status_code == 422  # Unprocessable Entity for invalid int

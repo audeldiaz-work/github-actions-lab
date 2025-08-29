@@ -4,11 +4,13 @@ It includes endpoints for retrieving a greeting and items by ID.
 """
 from typing import Union
 
+
 from fastapi import FastAPI
 from datetime import datetime
 
-
 app = FastAPI()
+
+
 @app.get("/timestamp")
 def get_timestamp() -> dict:
     """
