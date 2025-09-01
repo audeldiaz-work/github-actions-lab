@@ -1,7 +1,9 @@
 # Copilot Instructions for github-actions-lab
 
-## Project Overview
-- This repo is a Python FastAPI web app with three main endpoints: `/` (Hello World), `/items/{item_id}` (item lookup), and `/timestamp` (server timestamp).
+**Important Policy:** All documentation, comments, and instructions must always be written in English.
+
+-## Project Overview
+- This repo is a Python FastAPI web app with three main endpoints: `/` (static greeting), `/items/{item_id}` (echoes provided ID and optional `q`), and `/timestamp` (server timestamp in ISO UTC).
 - The codebase is containerized for VS Code development using dev containers (`.devcontainer/Dockerfile`).
 - CI/CD is managed via GitHub Actions, running tests, linting, building Docker images, and scanning for vulnerabilities.
 

@@ -1,26 +1,18 @@
 # github-actions-lab
 
-This repository contains a simple Python web application built with the FastAPI framework.
+This repository contains a Python web application built with the FastAPI framework.
+
+## Important Policy
+All documentation, comments, and instructions must always be written in English.
 
 ## About
 
-The application has two API endpoints:
-
-*   A root endpoint (`/`) that returns a simple "Hello World" message.
-*   An `/items/{item_id}` endpoint that takes an ID and an optional query parameter.
+The application provides three API endpoints (`/`, `/items/{item_id}`, `/timestamp`). The `/items/{item_id}` endpoint echoes the provided ID and optional query parameter and does not access any external datastore.
 
 ## Development
 
-This repository is set up for development with [VS Code Remote - Containers](https://code.visualstudio.com/docs/remote/containers). This allows you to open the project in a pre-configured Docker container for a consistent development experience.
-
-To get started, open the repository in VS Code and run the **Remote-Containers: Reopen in Container** command.
+This repository is configured for development with VS Code Dev Containers. Open the repo in VS Code and run **Remote-Containers: Reopen in Container** to work inside the recommended container.
 
 ## CI/CD
 
-This repository has a robust GitHub Actions workflow that automatically runs on every push or pull request to the `main` branch. This pipeline does the following:
-
-*   Installs dependencies and runs tests using `pytest`.
-*   Performs static code analysis using `flake8`.
-*   Builds a Docker image of the application.
-*   Scans the code and Docker image for vulnerabilities using Trivy and Checkmarx tools.
-*   Pushes the built Docker image to the GitHub Container Registry.
+This repository includes GitHub Actions workflows that run on pushes and pull requests to `main`. The pipeline installs dependencies, runs tests, lints the code, builds a Docker image, scans for vulnerabilities, and optionally publishes the image to GitHub Container Registry.
